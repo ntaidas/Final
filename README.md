@@ -1,2 +1,1 @@
-# Final
-Final Project for CodeAcademy
+Finalinis CodeAcademy projektas v2
