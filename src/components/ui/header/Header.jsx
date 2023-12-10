@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import UsersContext from "../../../contexts/UserContext";
 
 const StyledHeader = styled.header`
   @-webkit-keyframes glow {
@@ -98,6 +101,8 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
+  const { loggedInUser, setLoggedInUser } = useContext(UsersContext);
+  const navigate = useNavigate();
   return (
     <StyledHeader>
       <div className="titleName">
@@ -106,37 +111,86 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <a href="">Home</a>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="">Popular</a>
+            <NavLink
+              to="/popular"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Popular
+            </NavLink>
           </li>
           <li>
-            <a href="">Followed</a>
+            <NavLink
+              to="/followed"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Followed
+            </NavLink>
           </li>
           <li>
-            <a href="">My Posts</a>
+            <NavLink
+              to="/myPosts"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              My Posts
+            </NavLink>
           </li>
           <li>
-            <a href="">New Post</a>
+            <NavLink
+              to="/newPost"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              New Post
+            </NavLink>
           </li>
         </ul>
-        <div className="userPanel">
-          <div>
-            <img
-              src="https://cdn.pixabay.com/photo/2013/07/12/14/49/user-148855_1280.png"
-              alt="user avatar"
-            />
+        {!loggedInUser ? (
+          <div className="userPanel">
+            <div>
+              <img
+                src="https://cdn.pixabay.com/photo/2013/07/12/14/49/user-148855_1280.png"
+                alt="user avatar"
+              />
+            </div>
+            <ul>
+              <li>
+                <NavLink
+                  to="/user/login"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Sign In
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/user/register"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Sign Up
+                </NavLink>
+              </li>
+            </ul>
           </div>
-          <ul>
-            <li>
-              <a href="">Sign In</a>
-            </li>
-            <li>
-              <a href="">Sign Up</a>
-            </li>
-          </ul>
-        </div>
+        ) : (
+          <div>
+            <span>{loggedInUser.userName}</span>
+            <button
+              onClick={() => {
+                setLoggedInUser("");
+                navigate("/");
+              }}
+            >
+              Log Out
+            </button>
+          </div>
+        )}
       </nav>
     </StyledHeader>
   );
