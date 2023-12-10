@@ -4,7 +4,8 @@ const StyledFooter = styled.footer`
   height: 200px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  background-color: #343441;
+  background-image:url(https://img.freepik.com/premium-photo/black-brick-building-wall_73152-4222.jpg);
+  background-position: cover;
   color: white;
   border: 5px solid #af5d1a;
   box-shadow:inset 0 0 10px 1px #af5d1a;
