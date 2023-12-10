@@ -19,7 +19,7 @@ const LoginPage = () => {
   const validationRules = Yup.object({
     name: Yup.string()
       .min(4, "must be longer than 4 symbols")
-      .required("Can't be")
+      .required("Can't be empty")
       .trim(),
     password: Yup.string().required("Must be filled").trim(),
   });
