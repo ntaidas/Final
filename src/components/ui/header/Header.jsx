@@ -69,9 +69,9 @@ const StyledHeader = styled.header`
       }
     }
     > .userPanel {
-        display:flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
       > div {
         display: flex;
         justify-content: center;
@@ -87,7 +87,6 @@ const StyledHeader = styled.header`
           color: #af5d1a;
           box-shadow: 0px 0px 3px 2px #fff, inset 0px 0px 3px 1px #fff;
           padding: 8px 14px;
-          
         }
         a:hover {
           background-color: #af5d1a;
@@ -102,7 +101,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="titleName">
-        <h1>"Už pašto"&trade;</h1>
+        <h1>"Už Pašto"&trade;</h1>
       </div>
       <nav>
         <ul>
@@ -119,9 +118,7 @@ const Header = () => {
             <a href="">My Posts</a>
           </li>
           <li>
-            <a href="" className="active">
-              New Post
-            </a>
+            <a href="">New Post</a>
           </li>
         </ul>
         <div className="userPanel">
