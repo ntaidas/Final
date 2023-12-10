@@ -180,6 +180,7 @@ const Header = () => {
           </div>
         ) : (
           <div>
+            <img src={loggedInUser.profilePicture} alt={"profile picture of " + loggedInUser.userName  } />
             <span>{loggedInUser.userName}</span>
             <button
               onClick={() => {
