@@ -1,0 +1,38 @@
+{
+    "users":[
+        {
+            "id":1,
+            "userName":"admin",
+            "email":"admin@admin.net",
+            "password": "admin",
+            "profilePicture": "",
+            "age": 99,
+            "registerDate": "1991-08-08"
+            
+
+
+        },
+        {
+            "id":2,
+            "userName":"ntaidas",
+            "email":"ntaidas@adminDraugas.net",
+            "password": "123456",
+            "profilePicture": "",
+            "age": 32,
+            "registerDate": "2023-12-11"
+            
+
+
+        }
+    ],
+    "questions":[{
+        "id":1,
+        "title":"Welcome to 'Uz pasto'! biggest comunity on the street ",
+        "authorId":1,
+        "edited": false,
+        "score": 69,
+        "answered": true
+
+    }],
+    "answers":[]
+}
