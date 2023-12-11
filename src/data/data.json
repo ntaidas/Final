@@ -31,10 +31,18 @@
     {
       "id": 1,
       "title": "Welcome to 'Uz pasto'! biggest comunity on the street ",
+      "content": "Welcome to 'Uz pasto'! biggest comunity on the street. Get all your questions answered now! All you need is to sign in!",
       "authorId": 1,
       "edited": false,
       "score": 69,
       "answered": true
+    },
+    {
+      "id": "abdf27d7-feb9-4508-916e-93242d7c6673",
+      "authorId": 1,
+      "score": 0,
+      "title": "Padekit man",
+      "content": "Sveiki, labai prasau visu pagalbos"
     }
   ],
   "answers": []
