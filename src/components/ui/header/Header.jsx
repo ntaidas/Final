@@ -126,30 +126,36 @@ const Header = () => {
               Popular
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/followed"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Followed
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/myPosts"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              My Posts
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/posts/newPost"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              New Post
-            </NavLink>
-          </li>
+
+          {loggedInUser ? (
+            <>
+              <li>
+                <NavLink
+                  to="/followed"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Followed
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/myPosts"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  My Posts
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/posts/newPost"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  New Post
+                </NavLink>
+              </li>
+            </>
+          ) : null}
         </ul>
         {!loggedInUser ? (
           <div className="userPanel">

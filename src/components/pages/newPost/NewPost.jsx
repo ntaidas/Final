@@ -55,7 +55,7 @@ const NewPost = () => {
       <form onSubmit={formik.handleSubmit}>
         <InputHandler type="text" name="title" formik={formik} />
         <InputHandler type="textarea" name="content" formik={formik} />    
-        <button type="Submit">New Game Card</button>
+        <button type="Submit">Post</button>
       </form>
     </StyledNewPost>
   );
