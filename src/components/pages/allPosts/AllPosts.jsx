@@ -11,7 +11,7 @@ const AllPosts = () => {
     <StyledFeed>
       {
       posts.map((post) => {
-        return (<PostCard key={post.id} data={post} />);
+        return <PostCard key={post.id} data={post} />;
       })}
       {console.log(posts)}
     </StyledFeed>

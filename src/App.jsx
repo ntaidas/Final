@@ -7,6 +7,8 @@ import LoginPage from "./components/pages/loginPage/LoginPage";
 import RegisterPage from "./components/pages/registerPage/RegisterPage";
 import NewPost from "./components/pages/newPost/NewPost";
 import AllPosts from "./components/pages/allPosts/AllPosts";
+import EditPost from "./components/pages/editPost/EditPost";
+import PostPage from "./components/pages/postPage/PostPage";
 
 function App() {
   return (
@@ -14,12 +16,13 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/posts" element={<AllPosts/>}>
-          <Route path="newPost" element={<NewPost/>}/>
-        </Route>
+        <Route path="/posts" element={<AllPosts />} />
+        <Route path="post/:id" element={<PostPage/>} />
+        <Route path="newPost" element={<NewPost />} />
+        <Route path="edit/:id" element={<EditPost />} />
         <Route path="/user">
-          <Route path="login" element={<LoginPage/>}/>
-          <Route path="register" element={<RegisterPage/>}/>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
         </Route>
       </Routes>
       <Footer />

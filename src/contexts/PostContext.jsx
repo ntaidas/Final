@@ -35,7 +35,7 @@ const reducer = (state, action) => {
       });
       return state.map((el) => {
         if (el.id.toString() === action.id.toString()) {
-          return { id: action.id, ...action.data };
+          return { id: action.id, authorId:action.authorId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
         } else {
           return el;
         }

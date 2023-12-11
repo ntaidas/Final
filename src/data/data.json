@@ -25,19 +25,62 @@
       "password": "Akuma1991!",
       "profilePicture": "https://media.comicbook.com/2019/05/gintama-gintoki-1172688.jpeg",
       "age": 32
+    },
+    {
+      "id": "c97bc288-7e7d-4315-b51b-92f9bc0de1fd",
+      "userName": "gintariukas",
+      "email": "gintariukas@aidas.com",
+      "password": "123456",
+      "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR174u-zCp3PEd5x6V6hTHXr_LLD4uw4rb6w4Gx-Oa7Qw&s",
+      "age": 26
     }
   ],
   "posts": [
     {
-      "id": 1,
-      "title": "Welcome to 'Uz pasto'! biggest comunity on the street ",
+      "title": "Welcome to 'Uz pasto'! ",
       "content": "Welcome to 'Uz pasto'! biggest comunity on the street. Get all your questions answered now! All you need is to sign in!",
+      "edited": true,
+      "id": 1,
       "authorId": 1,
-      "edited": false,
       "score": 69,
       "answered": true
+    },
+    {
+      "title": "Sveiki",
+      "content": "visi visi",
+      "edited": true,
+      "id": "f9148faa-b130-44d7-a04b-8dd690f07772",
+      "authorId": 1,
+      "score": 0,
+      "anwsered": false
+    },
+    {
+      "id": "a20c4e44-3d5c-451b-97d3-e490811491be",
+      "authorId": 2,
+      "score": 0,
+      "edited": false,
+      "anwsered": false,
+      "title": "Wow!",
+      "content": "Wow OMG what a cool website"
+    },
+    {
+      "id": "97a96671-3989-4c1a-9013-000e21bdf5d7",
+      "authorId": 1,
+      "score": 0,
+      "edited": false,
+      "anwsered": false,
+      "title": "Sveiki visi",
+      "content": "Sveiki visi, kaip laikotes?"
+    },
+    {
+      "title": "Sveiki Visi!",
+      "content": "Lyg tais",
+      "edited": true,
+      "id": "357c197e-fb71-4e12-a9b9-c8dee46c48ab",
+      "authorId": "c97bc288-7e7d-4315-b51b-92f9bc0de1fd",
+      "score": 0,
+      "anwsered": false
     }
-    
   ],
   "answers": []
 }
