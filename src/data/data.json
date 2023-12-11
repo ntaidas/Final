@@ -37,15 +37,6 @@
   ],
   "posts": [
     {
-      "title": "Welcome to 'Uz pasto'! ",
-      "content": "Welcome to 'Uz pasto'! biggest comunity on the street. Get all your questions answered now! All you need is to sign in!",
-      "edited": true,
-      "id": 1,
-      "authorId": 1,
-      "score": 69,
-      "answered": true
-    },
-    {
       "title": "Sveiki",
       "content": "visi visi",
       "edited": true,
@@ -80,7 +71,16 @@
       "authorId": "c97bc288-7e7d-4315-b51b-92f9bc0de1fd",
       "score": 0,
       "anwsered": false
+    },
+    {
+      "id": "957d8ad5-dd6f-4d10-badd-254dd7bf571d",
+      "authorId": 1,
+      "score": 0,
+      "edited": false,
+      "anwsered": false,
+      "title": "laba",
+      "content": "sveikuciai"
     }
   ],
-  "answers": []
+  "comments": []
 }

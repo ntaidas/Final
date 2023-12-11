@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from "react";
 
-const PostsContext = createContext();
-const PostActionTypes = {
+const CommentContext = createContext();
+const CommentActionTypes = {
   getPosts: "get all posts",
   newPost: "Write new post",
   deletePost: "delete the post",
@@ -9,10 +9,10 @@ const PostActionTypes = {
 };
 const reducer = (state, action) => {
   switch (action.type) {
-    case PostActionTypes.getPosts:
+    case CommentActionTypes.getPosts:
       return action.data;
-    case PostActionTypes.newPost:
-      fetch(`http://localhost:8888/posts`, {
+    case CommentActionTypes.newPost:
+      fetch(`http://localhost:8888/answers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,13 +20,14 @@ const reducer = (state, action) => {
         body: JSON.stringify(action.data),
       });
       return [...state, action.data];
-    case PostActionTypes.deletePost:
-      fetch(`http://localhost:8888/posts/${action.id}`, {
+    case CommentActionTypes.deletePost:
+      console.dir(action.id)
+      fetch(`http://localhost:8888/comments/${action.id}`, {
         method: "DELETE",
       });
-      return state.filter((el) => (el.id).toString() !== (action.id).toString());
-    case PostActionTypes.edit:
-      fetch(`http://localhost:8888/posts/${action.id}`, {
+      return state.filter((el) => el.id.toString() !== action.id.toString());
+    case CommentActionTypes.edit:
+      fetch(`http://localhost:8888/comments/${action.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -46,26 +47,26 @@ const reducer = (state, action) => {
   }
 };
 
-const PostsProvider = ({ children }) => {
-  const [posts, setPosts] = useReducer(reducer, []);
+const CommentProvider = ({ children }) => {
+  const [comments, setcomments] = useReducer(reducer, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8888/posts`)
+    fetch(`http://localhost:8888/comments`)
       .then((res) => res.json())
       .then((data) =>
-        setPosts({
-          type: PostActionTypes.getPosts,
+      setcomments({
+          type: CommentActionTypes.getPosts,
           data: data,
         })
       );
   }, []);
 
   return (
-    <PostsContext.Provider value={{ posts, setPosts, PostActionTypes }}>
+    <CommentContext.Provider value={{ comments, setcomments, CommentActionTypes }}>
       {children}
-    </PostsContext.Provider>
+    </CommentContext.Provider>
   );
 };
 
-export { PostsProvider};
-export default PostsContext;
+export { CommentProvider};
+export default CommentContext;

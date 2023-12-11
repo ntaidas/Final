@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import PostsContext from "../../../contexts/PostContext";
 import UsersContext from "../../../contexts/UserContext";
 import { Link } from "react-router-dom";
+import CommentContext from "../../../contexts/CommentContext";
 
 const StyledPostCard = styled.div``;
 
