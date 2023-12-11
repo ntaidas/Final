@@ -38,8 +38,8 @@ const PostCard = ({ data }) => {
               <Link
                 to={`/edit/${data.id}`}
                 style={{
-                  color: "unset",
-                  textDecoration: "unset",
+                  color: "white",
+                  textDecoration: "none",
                 }}
               >
                 Edit

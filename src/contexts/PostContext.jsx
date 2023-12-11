@@ -21,6 +21,7 @@ const reducer = (state, action) => {
       });
       return [...state, action.data];
     case PostActionTypes.deletePost:
+      console.dir(action.id)
       fetch(`http://localhost:8888/posts/${action.id}`, {
         method: "DELETE",
       });
