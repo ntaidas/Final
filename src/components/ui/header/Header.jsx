@@ -120,7 +120,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/popular"
+              to="/posts"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               Popular
@@ -148,7 +148,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/posts/newPost"
+                  to="/newPost"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
                   New Post

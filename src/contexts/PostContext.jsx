@@ -35,7 +35,7 @@ const reducer = (state, action) => {
       });
       return state.map((el) => {
         if (el.id.toString() === action.id.toString()) {
-          return { id: action.id, ...action.data };
+          return { id: action.id, authorId:action.authorId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
         } else {
           return el;
         }
@@ -50,7 +50,7 @@ const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useReducer(reducer, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/videoGames`)
+    fetch(`http://localhost:8888/posts`)
       .then((res) => res.json())
       .then((data) =>
         setPosts({

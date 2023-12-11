@@ -40,6 +40,8 @@ const NewPost = () => {
         id: uuid(),
         authorId: loggedInUser.id,
         score: 0,
+        edited: false,
+        anwsered: false,
         ...values,
       };
       setPosts({
