@@ -144,7 +144,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/newPost"
+              to="/posts/newPost"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               New Post
@@ -180,7 +180,10 @@ const Header = () => {
           </div>
         ) : (
           <div>
-            <img src={loggedInUser.profilePicture} alt={"profile picture of " + loggedInUser.userName  } />
+            <img
+              src={loggedInUser.profilePicture}
+              alt={"profile picture of " + loggedInUser.userName}
+            />
             <span>{loggedInUser.userName}</span>
             <button
               onClick={() => {
