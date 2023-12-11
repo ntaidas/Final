@@ -50,7 +50,7 @@ const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useReducer(reducer, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/videoGames`)
+    fetch(`http://localhost:8888/posts`)
       .then((res) => res.json())
       .then((data) =>
         setPosts({

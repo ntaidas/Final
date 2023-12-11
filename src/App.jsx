@@ -6,6 +6,7 @@ import Home from "./components/pages/home/Home";
 import LoginPage from "./components/pages/loginPage/LoginPage";
 import RegisterPage from "./components/pages/registerPage/RegisterPage";
 import NewPost from "./components/pages/newPost/NewPost";
+import AllPosts from "./components/pages/allPosts/AllPosts";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/posts">
+        <Route path="/posts" element={<AllPosts/>}>
           <Route path="newPost" element={<NewPost/>}/>
         </Route>
         <Route path="/user">
