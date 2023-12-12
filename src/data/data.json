@@ -87,6 +87,30 @@
       "edited": false,
       "title": "asasdasd",
       "content": "asdasdsd"
+    },
+    {
+      "id": "f37e0e07-cfd4-4765-bb1b-ac4a07f6a3c7",
+      "score": 0,
+      "parentId": "01ea689b-567a-492f-a727-f4c73d9553df",
+      "authorId": 2,
+      "edited": false,
+      "content": "Sveiki, labai prasau visu pagalbos"
+    },
+    {
+      "id": "11e358e9-8745-49b4-b45f-c26526b29745",
+      "score": 0,
+      "parentId": "01ea689b-567a-492f-a727-f4c73d9553df",
+      "authorId": 2,
+      "edited": false,
+      "content": "mamamia"
+    },
+    {
+      "id": "2d592a18-030a-43d6-a002-8250f98e6792",
+      "score": 0,
+      "parentId": "01ea689b-567a-492f-a727-f4c73d9553df",
+      "authorId": 2,
+      "edited": false,
+      "content": "mama"
     }
   ]
 }

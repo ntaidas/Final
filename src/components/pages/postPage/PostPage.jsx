@@ -14,7 +14,7 @@ const PostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState("");
-  const [comments, setComments] = useState("");
+  const [comments, setComments] = useState([]);
   const { setPosts, PostActionTypes } = useContext(PostsContext);
   const { loggedInUser } = useContext(UsersContext);
 
@@ -29,8 +29,9 @@ const PostPage = () => {
     fetch(`http://localhost:8888/comments/`)
       .then((res) => res.json())
       .then((data) => {
-        setComments({data});
-        console.log(`cia komentarai${comments}`);
+        if (!data.title) {
+        }
+        setComments(data);
       });
   }, []);
 
@@ -50,8 +51,11 @@ const PostPage = () => {
           Delete
         </button>
       ) : null}
-     
-      {comments && relevantComments.map(comment => { <CommentCard data={comment}></CommentCard>})}
+     {/* {comments.map((comment)=> {
+      return <CommentCard
+      key={comment.id} data={comment}/>
+     })} */}
+       {comments && relevantComments.map(comment => { return <CommentCard data={comment}></CommentCard>})}
     </>
   );
 };
