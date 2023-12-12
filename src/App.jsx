@@ -9,6 +9,7 @@ import NewPost from "./components/pages/newPost/NewPost";
 import AllPosts from "./components/pages/allPosts/AllPosts";
 import EditPost from "./components/pages/editPost/EditPost";
 import PostPage from "./components/pages/postPage/PostPage";
+import NewComment from "./components/pages/newComment/NewComment";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/posts" element={<AllPosts />} />
-        <Route path="posts/:id" element={<PostPage/>} />
+        <Route path="posts/:id" element={<PostPage />} />
+        <Route path="newComment" element={<NewComment />} />
         <Route path="newPost" element={<NewPost />} />
         <Route path="edit/:id" element={<EditPost />} />
         <Route path="/user">

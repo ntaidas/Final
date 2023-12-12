@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import UsersContext from "../../../contexts/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate} from "react-router-dom";
+import NewComment from "../../pages/newComment/NewComment";
+import PostsContext from "../../../contexts/PostContext"
 
 const StyledPostCard = styled.div`
   display: grid;
@@ -12,6 +14,9 @@ const StyledPostCard = styled.div`
 
 const PostCard = ({ data }) => {
   const { loggedInUser } = useContext(UsersContext);
+  const { setPosts, PostActionTypes} = useContext(PostsContext)
+  const {id} = useParams();
+  const navigate = useNavigate();
   return (
     data && (
       <>
@@ -37,7 +42,6 @@ const PostCard = ({ data }) => {
             </div>
             {loggedInUser.id === data.authorId ? (
               <div>
-                {" "}
                 <Link
                   to={`/edit/${data.id}`}
                   style={{
@@ -47,9 +51,10 @@ const PostCard = ({ data }) => {
                 >
                   Edit
                 </Link>
+               
               </div>
             ) : loggedInUser ? (
-              <button>Reply</button>
+              <NewComment data={data} />
             ) : null}
           </div>
         </StyledPostCard>

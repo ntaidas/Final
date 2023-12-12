@@ -5,7 +5,7 @@ import PostCard from "../../ui/post/PostCard";
 
 const StyledFeed = styled.main`
 display:flex;
-flex-direction:column-reverse;`;
+flex-direction:column;`;
 
 const AllPosts = () => {
   const { posts } = useContext(PostsContext);

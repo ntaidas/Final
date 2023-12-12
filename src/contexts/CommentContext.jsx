@@ -2,17 +2,17 @@ import { createContext, useEffect, useReducer } from "react";
 
 const CommentContext = createContext();
 const CommentActionTypes = {
-  getPosts: "get all posts",
-  newPost: "Write new post",
-  deletePost: "delete the post",
-  edit: "edit post",
+  getComments: "get all Comment",
+  newComment: "Write new Comment",
+  deleteComment: "delete the Comment",
+  editComment: "edit Comment",
 };
 const reducer = (state, action) => {
   switch (action.type) {
-    case CommentActionTypes.getPosts:
+    case CommentActionTypes.getComments:
       return action.data;
-    case CommentActionTypes.newPost:
-      fetch(`http://localhost:8888/answers`, {
+    case CommentActionTypes.newComment:
+      fetch(`http://localhost:8888/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const reducer = (state, action) => {
         body: JSON.stringify(action.data),
       });
       return [...state, action.data];
-    case CommentActionTypes.deletePost:
+    case CommentActionTypes.deleteComment:
       console.dir(action.id)
       fetch(`http://localhost:8888/comments/${action.id}`, {
         method: "DELETE",
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
       });
       return state.map((el) => {
         if (el.id.toString() === action.id.toString()) {
-          return { id: action.id, authorId:action.authorId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
+          return { id: action.id, postId:action.postId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
         } else {
           return el;
         }

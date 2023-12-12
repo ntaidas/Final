@@ -21,18 +21,10 @@ const StyledCommentCard = styled.div`
 
 const CommentCard = ({ data }) => {
   return (
-    <Link to={`posts/comments/${data.id}`} style={{
-      color: "unset",
-      textDecoration: "unset"
-    }}>
       <StyledCommentCard>
-        <h1>{data.name}</h1>
-        <img
-          src={data.image}
-          alt={`${data.name} poster`}
-        />
+        <h1>{data.title}</h1>
+        <p>{data.content}</p>
       </StyledCommentCard>
-    </Link>
   );
 }
  

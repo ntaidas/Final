@@ -6,30 +6,54 @@ import UsersContext from "../../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import CommentContext from "../../../contexts/CommentContext";
 import PostCard from "../../ui/post/PostCard";
+import CommentCard from "../../ui/commentCard/CommentCard";
 
 const StyledPostCard = styled.div``;
 
 const PostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-   const [post, setPost] = useState("")
+  const [post, setPost] = useState("");
+  const [comments, setComments] = useState("");
   const { setPosts, PostActionTypes } = useContext(PostsContext);
   const { loggedInUser } = useContext(UsersContext);
 
   useEffect(() => {
-     fetch(`http://localhost:8888/posts/${id}`)
+    fetch(`http://localhost:8888/posts/${id}`)
       .then((res) => res.json())
-       .then((data) => {
-        if (!data.title) {
-         }
-         setPost(data);
-       });
-   }, []);
+      .then((data) => {
+        setPost(data);
+      });
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:8888/comments/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setComments(data);
+        console.log(data);
+      });
+  }, []);
+
+  //  const replies = comments.filter(comment => comment.parentId === post.id)
+  console.log(comments);
+
   // pakeista post i data, nes su post negauna
   return (
-    <PostCard
-    data={post}></PostCard>
-  )
+    <>
+      <PostCard data={post}></PostCard>
+      {loggedInUser.id === post.authorId ? (
+        <button
+          onClick={() => {
+            setPosts({ type: PostActionTypes.deletePost, id: id });
+            navigate("/posts");
+          }}
+        >
+          Delete
+        </button>
+      ) : null}
+      {comments && <CommentCard data={comments}></CommentCard>}
+    </>
+  );
 };
 
 export default PostPage;

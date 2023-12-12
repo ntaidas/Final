@@ -37,41 +37,56 @@
   ],
   "posts": [
     {
-      "id": "a20c4e44-3d5c-451b-97d3-e490811491be",
+      "id": "032626e7-601b-405e-8f63-3aef10e3edf2",
       "authorId": 2,
       "score": 0,
       "edited": false,
       "anwsered": false,
-      "title": "Wow!",
-      "content": "Wow OMG what a cool website"
+      "title": "naujas postas",
+      "content": "laba diena su vistiena"
     },
     {
-      "title": "Sveiki Visi!",
-      "content": "Lyg tais",
-      "edited": true,
-      "id": "357c197e-fb71-4e12-a9b9-c8dee46c48ab",
-      "authorId": "c97bc288-7e7d-4315-b51b-92f9bc0de1fd",
-      "score": 0,
-      "anwsered": false
-    },
-    {
-      "title": "laba",
-      "content": "sveikuciai",
-      "edited": true,
-      "id": "957d8ad5-dd6f-4d10-badd-254dd7bf571d",
+      "id": "01ea689b-567a-492f-a727-f4c73d9553df",
       "authorId": 1,
       "score": 0,
-      "anwsered": false
-    },
-    {
-      "title": "Naujasss",
-      "content": "dar vienas naujas postas",
-      "edited": true,
-      "id": "573417f7-3315-49b5-9966-8022cb74f6cb",
-      "authorId": 1,
-      "score": 0,
-      "anwsered": false
+      "edited": false,
+      "anwsered": false,
+      "title": "Sveiki visi",
+      "content": "Sveikuciai kaip sekasi?"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "a20c4e44-3d5c-451b-97d3-e490811491be",
+      "authorId": 2,
+      "parentId": "a20c4e44-3d5c-451b-97d3-e490811491be",
+      "score": 0,
+      "edited": false,
+      "anwsered": false,
+      "title": "Wow!",
+      "content": "Wow OMG what a cool website",
+      "comments": []
+    },
+    {
+      "id": "55d2f081-8c91-4cf6-a75e-d2c0371944fd",
+      "score": 0,
+      "edited": false,
+      "title": "bababa",
+      "content": "lalalalal"
+    },
+    {
+      "id": "e396b7ad-0980-423a-bbdc-fa24fcaa50d7",
+      "score": 0,
+      "edited": false,
+      "title": "dada",
+      "content": "Sveiki, labai prasau visu pagalbos"
+    },
+    {
+      "id": "80e1d166-8815-44d5-8741-3c39f93221f9",
+      "score": 0,
+      "edited": false,
+      "title": "asasdasd",
+      "content": "asdasdsd"
+    }
+  ]
 }
