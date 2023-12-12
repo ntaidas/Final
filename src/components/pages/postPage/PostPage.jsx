@@ -29,15 +29,14 @@ const PostPage = () => {
     fetch(`http://localhost:8888/comments/`)
       .then((res) => res.json())
       .then((data) => {
-        setComments(data);
-        console.log(data);
+        setComments({data});
+        console.log(`cia komentarai${comments}`);
       });
   }, []);
 
-  //  const replies = comments.filter(comment => comment.parentId === post.id)
   console.log(comments);
+  const relevantComments = comments.filter(comment => comment.parentId === post.id)
 
-  // pakeista post i data, nes su post negauna
   return (
     <>
       <PostCard data={post}></PostCard>
@@ -51,7 +50,8 @@ const PostPage = () => {
           Delete
         </button>
       ) : null}
-      {comments && <CommentCard data={comments}></CommentCard>}
+     
+      {comments && relevantComments.map(comment => { <CommentCard data={comment}></CommentCard>})}
     </>
   );
 };

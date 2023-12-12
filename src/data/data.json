@@ -37,15 +37,6 @@
   ],
   "posts": [
     {
-      "id": "032626e7-601b-405e-8f63-3aef10e3edf2",
-      "authorId": 2,
-      "score": 0,
-      "edited": false,
-      "anwsered": false,
-      "title": "naujas postas",
-      "content": "laba diena su vistiena"
-    },
-    {
       "id": "01ea689b-567a-492f-a727-f4c73d9553df",
       "authorId": 1,
       "score": 0,
@@ -53,6 +44,15 @@
       "anwsered": false,
       "title": "Sveiki visi",
       "content": "Sveikuciai kaip sekasi?"
+    },
+    {
+      "title": "reikia daugiau",
+      "content": "reikia daugoai postu",
+      "edited": true,
+      "id": "5396d922-d310-4fc8-a160-57e9f271a833",
+      "authorId": 1,
+      "score": 0,
+      "anwsered": false
     }
   ],
   "comments": [

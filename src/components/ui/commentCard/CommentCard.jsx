@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 const StyledCommentCard = styled.div`
@@ -19,10 +19,11 @@ const StyledCommentCard = styled.div`
   }
 `;
 
-const CommentCard = ({ data }) => {
+const CommentCard = ( {data} ) => {
+  console.dir(data)
+ 
   return (
       <StyledCommentCard>
-        <h1>{data.title}</h1>
         <p>{data.content}</p>
       </StyledCommentCard>
   );

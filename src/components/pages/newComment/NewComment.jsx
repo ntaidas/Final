@@ -3,25 +3,20 @@ import * as Yup from "yup";
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import UserContext from "../../../contexts/UserContext";
 import InputHandler from "../../ui/inputs/InputHandler";
-import PostsContext from "../../../contexts/PostContext";
 import CommentContext from "../../../contexts/CommentContext";
+
 
 const StyledNewComment = styled.main`
 `;
 
-const NewComment = (parentId) => {
-  console.dir(parentId)
-  const { comments, setcomments, CommentActionTypes } = useContext(CommentContext);
-  const {posts} = useContext(PostsContext)
+const NewComment = ({dataId, title}) => {
+  const { setComments, CommentActionTypes } = useContext(CommentContext);
   const { loggedInUser } = useContext(UserContext);
-  const navigate = useNavigate();
-
   const values = {
-    title: "",
     content: "",
+    parentId: dataId
     
   };
   const validationRules = Yup.object({
@@ -44,22 +39,22 @@ const NewComment = (parentId) => {
       const commentValues = {
         id: uuid(),
         score: 0,
-        parentId:parentId,
+        parentId: dataId,
+        authorId: loggedInUser.id,
         edited: false,
         ...values,
       };
-      setcomments({
+      setComments({
         type: CommentActionTypes.newComment,
         data: commentValues,
       });
-      navigate("/posts")
+      console.log(` cia yra formik${values}`)
     },
   });
   return (
     <StyledNewComment>
-      <h1>reply to {posts.postId}</h1>
+      <h1>reply to {title}</h1>
       <form onSubmit={formik.handleSubmit}>
-        <InputHandler type="text" name="title" formik={formik} />
         <InputHandler type="textarea" name="content" formik={formik} />    
         <button type="Submit">reply</button>
       </form>

@@ -54,7 +54,7 @@ const PostCard = ({ data }) => {
                
               </div>
             ) : loggedInUser ? (
-              <NewComment data={data} />
+              <NewComment dataId={data.id} title={data.title} />
             ) : null}
           </div>
         </StyledPostCard>

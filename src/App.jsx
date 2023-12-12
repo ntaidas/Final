@@ -19,7 +19,6 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/posts" element={<AllPosts />} />
         <Route path="posts/:id" element={<PostPage />} />
-        <Route path="newComment" element={<NewComment />} />
         <Route path="newPost" element={<NewPost />} />
         <Route path="edit/:id" element={<EditPost />} />
         <Route path="/user">

@@ -36,7 +36,7 @@ const reducer = (state, action) => {
       });
       return state.map((el) => {
         if (el.id.toString() === action.id.toString()) {
-          return { id: action.id, postId:action.postId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
+          return { id: action.id, parentId:action.parentId, authorId:action.authorId, edited:action.edited,score:action.score,  ...action.data };
         } else {
           return el;
         }
@@ -48,21 +48,21 @@ const reducer = (state, action) => {
 };
 
 const CommentProvider = ({ children }) => {
-  const [comments, setcomments] = useReducer(reducer, []);
+  const [comments, setComments] = useReducer(reducer, []);
 
   useEffect(() => {
     fetch(`http://localhost:8888/comments`)
       .then((res) => res.json())
       .then((data) =>
-      setcomments({
-          type: CommentActionTypes.getPosts,
+      setComments({
+          type: CommentActionTypes.getComments,
           data: data,
         })
       );
   }, []);
 
   return (
-    <CommentContext.Provider value={{ comments, setcomments, CommentActionTypes }}>
+    <CommentContext.Provider value={{ comments, setComments, CommentActionTypes }}>
       {children}
     </CommentContext.Provider>
   );
