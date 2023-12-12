@@ -16,15 +16,11 @@ const NewComment = ({dataId, title}) => {
   const { loggedInUser } = useContext(UserContext);
   const values = {
     content: "",
-    parentId: dataId
+    parentId: dataId,
+    authorId: loggedInUser.id
     
   };
   const validationRules = Yup.object({
-    title: Yup.string()
-      .min(4, `Can't be shorter than 4`)
-      .max(30, `Maximum 30 characters allowed`)
-      .required("required")
-      .trim(),
     content: Yup.string()
       .min(4, `Can't be shorter than 4`)
       .max(140, `Maximum of 140 characters is allowed`)
@@ -36,6 +32,7 @@ const NewComment = ({dataId, title}) => {
     initialValues: values,
     validationSchema: validationRules,
     onSubmit: (values) => {
+      console.log(values);
       const commentValues = {
         id: uuid(),
         score: 0,
