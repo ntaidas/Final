@@ -59,7 +59,7 @@ const EditPost = () => {
                     id:id,
                     data:editedValues
                 })
-                navigate(`/post/${id}`)
+                navigate(`/posts/${id}`)
             }}>
                 {(formik)=> (
                     <form onSubmit={formik.handleSubmit}>

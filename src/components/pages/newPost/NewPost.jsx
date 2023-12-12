@@ -8,7 +8,8 @@ import UserContext from "../../../contexts/UserContext";
 import InputHandler from "../../ui/inputs/InputHandler";
 import PostsContext from "../../../contexts/PostContext";
 
-const StyledNewPost = styled.main``;
+const StyledNewPost = styled.main`
+`;
 
 const NewPost = () => {
   const { setPosts, PostActionTypes } = useContext(PostsContext);
@@ -48,7 +49,7 @@ const NewPost = () => {
         type: PostActionTypes.newPost,
         data: postValues,
       });
-      navigate("/");
+      navigate("/posts")
     },
   });
   return (

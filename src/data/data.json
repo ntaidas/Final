@@ -37,15 +37,6 @@
   ],
   "posts": [
     {
-      "title": "Sveiki",
-      "content": "visi visi",
-      "edited": true,
-      "id": "f9148faa-b130-44d7-a04b-8dd690f07772",
-      "authorId": 1,
-      "score": 0,
-      "anwsered": false
-    },
-    {
       "id": "a20c4e44-3d5c-451b-97d3-e490811491be",
       "authorId": 2,
       "score": 0,
@@ -53,15 +44,6 @@
       "anwsered": false,
       "title": "Wow!",
       "content": "Wow OMG what a cool website"
-    },
-    {
-      "id": "97a96671-3989-4c1a-9013-000e21bdf5d7",
-      "authorId": 1,
-      "score": 0,
-      "edited": false,
-      "anwsered": false,
-      "title": "Sveiki visi",
-      "content": "Sveiki visi, kaip laikotes?"
     },
     {
       "title": "Sveiki Visi!",
@@ -73,13 +55,22 @@
       "anwsered": false
     },
     {
+      "title": "laba",
+      "content": "sveikuciai",
+      "edited": true,
       "id": "957d8ad5-dd6f-4d10-badd-254dd7bf571d",
       "authorId": 1,
       "score": 0,
-      "edited": false,
-      "anwsered": false,
-      "title": "laba",
-      "content": "sveikuciai"
+      "anwsered": false
+    },
+    {
+      "title": "Naujasss",
+      "content": "dar vienas naujas postas",
+      "edited": true,
+      "id": "573417f7-3315-49b5-9966-8022cb74f6cb",
+      "authorId": 1,
+      "score": 0,
+      "anwsered": false
     }
   ],
   "comments": []
