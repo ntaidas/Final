@@ -21,11 +21,10 @@ const reducer = (state, action) => {
       });
       return [...state, action.data];
     case PostActionTypes.deletePost:
-      console.dir(action.id)
       fetch(`http://localhost:8888/posts/${action.id}`, {
         method: "DELETE",
       });
-      return state.filter((el) => el.id.toString() !== action.id.toString());
+      return state.filter((el) => el.id !== action.id);
     case PostActionTypes.edit:
       fetch(`http://localhost:8888/posts/${action.id}`, {
         method: "PUT",
@@ -36,7 +35,14 @@ const reducer = (state, action) => {
       });
       return state.map((el) => {
         if (el.id.toString() === action.id.toString()) {
-          return { id: action.id, authorId:action.authorId, edited:action.edited,score:action.score, answered: action.answered, ...action.data };
+          return {
+            id: action.id,
+            authorId: action.authorId,
+            edited: action.edited,
+            score: action.score,
+            answered: action.answered,
+            ...action.data,
+          };
         } else {
           return el;
         }
@@ -68,5 +74,5 @@ const PostsProvider = ({ children }) => {
   );
 };
 
-export { PostsProvider};
+export { PostsProvider };
 export default PostsContext;

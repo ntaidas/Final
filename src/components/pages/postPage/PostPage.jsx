@@ -4,69 +4,55 @@ import { useEffect, useState, useContext } from "react";
 import PostsContext from "../../../contexts/PostContext";
 import UsersContext from "../../../contexts/UserContext";
 import { Link } from "react-router-dom";
+import CommentContext from "../../../contexts/CommentContext";
+import PostCard from "../../ui/post/PostCard";
+import CommentCard from "../../ui/commentCard/CommentCard";
 
 const StyledPostCard = styled.div``;
 
 const PostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-   const [post, setPost] = useState("")
+  const [post, setPost] = useState("");
+  const [comments, setComments] = useState("");
   const { setPosts, PostActionTypes } = useContext(PostsContext);
   const { loggedInUser } = useContext(UsersContext);
 
   useEffect(() => {
-     fetch(`http://localhost:8888/posts/${id}`)
+    fetch(`http://localhost:8888/posts/${id}`)
       .then((res) => res.json())
-       .then((data) => {
-        if (!data.title) {
-          console.log(`cia yra ${{data}}`);
-         }
-         setPost(data);
-         console.log(`cia nera ${{data}}`)
-       });
-   }, []);
-  // pakeista post i data, nes su post negauna
+      .then((data) => {
+        setPost(data);
+      });
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:8888/comments/`)
+      .then((res) => res.json())
+      .then((data) => {
+        setComments({data});
+        console.log(`cia komentarai${comments}`);
+      });
+  }, []);
+
+  console.log(comments);
+  const relevantComments = comments.filter(comment => comment.parentId === post.id)
+
   return (
-     post && 
-    (
-      <StyledPostCard>
-        <div>
-          <h1>{post.title}</h1>
-          <p>{post.content}</p>
-        </div>
-        <div>
-          <div>
-            <p>{post.score}</p>
-            <button></button>
-            <button></button>
-          </div>
-          {loggedInUser.id === post.authorId ? (
-            <div>
-              {" "}
-              <Link
-                to={`/edit/${post.id}`}
-                style={{
-                  color: "unset",
-                  textDecoration: "unset",
-                }}
-              >
-                Edit
-              </Link>
-              <button
-                onClick={() => {
-                  setPosts({ type: PostActionTypes.deletePost, id: id });
-                  navigate("/posts");
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          ) : loggedInUser ? (
-            <button>Reply</button>
-          ) : null}
-        </div>
-      </StyledPostCard>
-    )
+    <>
+      <PostCard data={post}></PostCard>
+      {loggedInUser.id === post.authorId ? (
+        <button
+          onClick={() => {
+            setPosts({ type: PostActionTypes.deletePost, id: id });
+            navigate("/posts");
+          }}
+        >
+          Delete
+        </button>
+      ) : null}
+     
+      {comments && relevantComments.map(comment => { <CommentCard data={comment}></CommentCard>})}
+    </>
   );
 };
 
