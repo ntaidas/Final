@@ -8,27 +8,28 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const StyledEditComment = styled.div``;
 
-const EditComment = () => {
+const EditComment = ({ data }) => {
+  console.log(data);
   const { setComments, CommentActionTypes } = useContext(CommentContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [commentValues, setCommentValues] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:8888/comments/${id}`)
+    fetch(`http://localhost:8888/comments/${data.id}`)
       .then((res) => res.json())
-      .then((data) => {
-        if (!data || !('content' in data)) {
+      .then((commentData) => {
+        if (!commentData || !('content' in commentData)) {
           navigate("/");
         } else {
           setCommentValues({
-            content: data.content,
-            edited: data.edited,
-            ...data,
+            content: commentData.content,
+            edited: commentData.edited,
+            ...commentData,
           });
         }
       });
-  }, []);
+  }, [data.id, navigate]);
 
   const validationRules = Yup.object({
     content: Yup.string()
@@ -48,13 +49,13 @@ const EditComment = () => {
           onSubmit={(values) => {
             const editedValues = {
               ...values,
-              edited: true
+              edited: true,
             };
 
             setComments({
               type: CommentActionTypes.editComment,
-              id: id,
-              data: editedValues
+              id: data.id,
+              data: editedValues,
             });
 
             navigate(`/posts/${id}`);

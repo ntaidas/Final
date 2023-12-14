@@ -54,7 +54,7 @@
       "content": "Sveikuciai kaip sekasi?"
     },
     {
-      "title": "reikia daugiau",
+      "title": "reikia maziau",
       "content": "reikia daugoai postu",
       "edited": true,
       "id": "5396d922-d310-4fc8-a160-57e9f271a833",
@@ -100,20 +100,12 @@
       "content": "tu pats baba"
     },
     {
-      "id": "e69f71b7-2599-42d4-91d9-465c5ae21398",
-      "score": 0,
-      "postId": "5396d922-d310-4fc8-a160-57e9f271a833",
-      "authorId": "admin",
-      "edited": false,
-      "content": "ko?"
-    },
-    {
+      "content": "Sveiki dundukai",
+      "edited": true,
       "id": "df88a639-e70e-4821-8563-93b8dfaa1264",
       "score": 0,
       "postId": "01ea689b-567a-492f-a727-f4c73d9553df",
-      "authorId": "admin",
-      "edited": false,
-      "content": "Sveiki, labai prasau visu pagalbos"
+      "authorId": "admin"
     }
   ]
 }
