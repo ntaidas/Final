@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import PostsContext from "../../../contexts/PostContext";
@@ -7,8 +6,7 @@ import { Link } from "react-router-dom";
 import CommentContext from "../../../contexts/CommentContext";
 import PostCard from "../../ui/post/PostCard";
 import CommentCard from "../../ui/commentCard/CommentCard";
-
-const StyledPostCard = styled.div``;
+import NewComment from "../newComment/NewComment";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -24,23 +22,34 @@ const PostPage = () => {
       .then((data) => {
         setPost(data);
       });
-  }, []);
+  }, [id]);
   useEffect(() => {
-    fetch(`http://localhost:8888/comments/`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.title) {
-        }
-        setComments(data);
-      });
-  }, []);
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:8888/comments/`);
+        const data = await response.json();
 
-  console.log(comments);
-  const relevantComments = comments.filter(comment => comment.parentId === post.id)
+        if (!data.title) {
+          setComments(data.filter((comment) => comment.postId === post.id));
+        }
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    };
+
+    fetchComments();
+  }, [post.id]);
+
+  const handleNewComment = (newComment) => {
+    setComments((prevComments) => [...prevComments, newComment]);
+  };
 
   return (
-    <>
-      <PostCard data={post}></PostCard>
+    <main> 
+      <div className="contentBox">
+        <h1>{post.title}</h1>
+        <p>{post.content}</p>
+      </div>
       {loggedInUser.id === post.authorId ? (
         <button
           onClick={() => {
@@ -51,12 +60,25 @@ const PostPage = () => {
           Delete
         </button>
       ) : null}
-     {/* {comments.map((comment)=> {
-      return <CommentCard
-      key={comment.id} data={comment}/>
-     })} */}
-       {comments && relevantComments.map(comment => { return <CommentCard data={comment}></CommentCard>})}
-    </>
+      {loggedInUser.id === post.authorId ? (
+        <div>
+          <Link
+            to={`/edit/${post.id}`}
+            style={{
+              color: "unset",
+              textDecoration: "unset",
+            }}
+          >
+            Edit
+          </Link>
+        </div>
+      ) : null}
+      {loggedInUser ? <NewComment dataId={post.id} onCommentSubmit={handleNewComment}/> : null}
+      {comments &&
+        comments.map((comment) => {
+          return <CommentCard data={comment} key={comment.id}></CommentCard>;
+        })}
+    </main>
   );
 };
 

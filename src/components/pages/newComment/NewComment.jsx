@@ -11,52 +11,73 @@ import CommentContext from "../../../contexts/CommentContext";
 const StyledNewComment = styled.main`
 `;
 
-const NewComment = ({dataId, title}) => {
-  const { setComments, CommentActionTypes } = useContext(CommentContext);
+const NewComment = ({ dataId, onCommentSubmit }) => {
+  const { CommentActionTypes, setComments } = useContext(CommentContext);
   const { loggedInUser } = useContext(UserContext);
-  const values = {
-    content: "",
-    parentId: dataId,
-    authorId: loggedInUser.id
-    
-  };
+
   const validationRules = Yup.object({
     content: Yup.string()
-      .min(4, `Can't be shorter than 4`)
+      .min(1, `Can't be shorter than 4`)
       .max(140, `Maximum of 140 characters is allowed`)
       .required("required")
       .trim(),
   });
 
   const formik = useFormik({
-    initialValues: values,
+    initialValues: {
+      content: "",
+    },
     validationSchema: validationRules,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
       const commentValues = {
         id: uuid(),
         score: 0,
-        parentId: dataId,
-        authorId: loggedInUser.id,
+        postId: dataId,
+        authorId: loggedInUser.userName,
         edited: false,
         ...values,
       };
-      setComments({
-        type: CommentActionTypes.newComment,
-        data: commentValues,
-      });
-      console.log(` cia yra formik${values}`)
+
+      try {
+        // Make the network request to post the new comment
+        const response = await fetch("http://localhost:8888/comments", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(commentValues),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to post comment");
+        }
+
+        // Assuming the server returns the newly created comment
+        const newComment = await response.json();
+
+        // Update the local state using onCommentSubmit
+        onCommentSubmit(newComment);
+
+        // Update the context state if needed
+        setComments({
+          type: CommentActionTypes.newComment,
+          data: newComment,
+        });
+      } catch (error) {
+        console.error("Error posting comment:", error);
+      }
     },
   });
+
   return (
     <StyledNewComment>
-      <h1>reply to {title}</h1>
       <form onSubmit={formik.handleSubmit}>
-        <InputHandler type="textarea" name="content" formik={formik} />    
-        <button type="Submit">reply</button>
+        <InputHandler type="textarea" name="content" formik={formik} />
+        <button type="submit">Reply</button>
       </form>
     </StyledNewComment>
   );
 };
+
 
 export default NewComment;

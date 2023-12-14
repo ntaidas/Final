@@ -43,6 +43,7 @@ const NewPost = () => {
         score: 0,
         edited: false,
         anwsered: false,
+        created: new Date().toISOString().slice(0,10),
         ...values,
       };
       setPosts({

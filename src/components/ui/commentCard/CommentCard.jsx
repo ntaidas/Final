@@ -1,5 +1,9 @@
+import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+import CommentContext from '../../../contexts/CommentContext';
+import UsersContext from "../../../contexts/UserContext";
+import EditComment from '../../pages/editComment/EditComment';
 
-import styled from "styled-components";
 
 const StyledCommentCard = styled.div`
   height: 350px;
@@ -17,16 +21,50 @@ const StyledCommentCard = styled.div`
     object-fit: contain;
     object-position: center;
   }
+
+  > button {
+    margin-top: 10px;
+  }
 `;
 
-const CommentCard = ( {data} ) => {
-  console.dir(data)
- 
+const CommentCard = ({ data }) => {
+  const { setComments, CommentActionTypes } = useContext(CommentContext);
+  const { loggedInUser } = useContext(UsersContext);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleDelete = () => {
+    setComments({
+      type: CommentActionTypes.deleteComment,
+      id: data.id,
+    });
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
   return (
-      <StyledCommentCard>
-        <p>{data.content}</p>
-      </StyledCommentCard>
+    <StyledCommentCard>
+      <p>{data.authorId}</p>
+      {isEditing ? (
+        <EditComment data={data} onCancelEdit={handleCancelEdit} />
+      ) : (
+        <>
+          <p>{data.content}</p>
+          {loggedInUser.userName === data.authorId ? (
+            <>
+              <button onClick={handleEditClick}>Edit</button>
+              <button onClick={handleDelete}>Delete</button>
+            </>
+          ) : null}
+        </>
+      )}
+    </StyledCommentCard>
   );
-}
- 
+};
+
 export default CommentCard;

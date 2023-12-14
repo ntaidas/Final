@@ -5,7 +5,12 @@ import PostCard from "../../ui/post/PostCard";
 
 const StyledFeed = styled.main`
 display:flex;
-flex-direction:column;`;
+flex-direction:column;
+align-items: center;
+gap: 2rem;
+div{
+  width:300px;
+}`;
 
 const AllPosts = () => {
   const { posts } = useContext(PostsContext);
