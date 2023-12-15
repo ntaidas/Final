@@ -5,6 +5,33 @@ import UsersContext from "../../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import CommentCard from "../../ui/commentCard/CommentCard";
 import NewComment from "../newComment/NewComment";
+import styled from "styled-components";
+
+const StyledPost = styled.main`
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 20px;
+  .contentBox {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #af5d1a;
+    padding: 30px;
+    h1 {
+      text-align: center;
+    }
+  }
+  .authorOptions {
+    display: flex;
+    button {
+      color: #af5d1a;
+      border-style: none;
+      background-color: #00000081;
+      border-radius: 10px;
+      box-shadow: none;
+    }
+  }
+`;
 
 const PostPage = () => {
   const { id } = useParams();
@@ -43,41 +70,52 @@ const PostPage = () => {
   };
 
   return (
-    <main> 
-      {post.edited ? <p>edited</p>: null}
-      <div className="contentBox">
-        <h1>{post.title}</h1>
-        <p>{post.content}</p>
-      </div>
-      {loggedInUser.id === post.authorId ? (
-        <button
-          onClick={() => {
-            setPosts({ type: PostActionTypes.deletePost, id: id });
-            navigate("/posts");
-          }}
-        >
-          Delete
-        </button>
-      ) : null}
-      {loggedInUser.id === post.authorId ? (
-        <div>
-          <Link
-            to={`/edit/${post.id}`}
-            style={{
-              color: "unset",
-              textDecoration: "unset",
-            }}
-          >
-            Edit
-          </Link>
-        </div>
-      ) : null}
-      {loggedInUser ? <NewComment dataId={post.id} onCommentSubmit={handleNewComment}/> : null}
+    <StyledPost>
       {comments &&
         comments.map((comment) => {
           return <CommentCard data={comment} key={comment.id}></CommentCard>;
         })}
-    </main>
+      <div className="contentBox">
+        {post.edited ? <p>edited</p> : null}
+        <div>
+          <h1>{post.title}</h1>
+          <p>{post.content}</p>
+        </div>
+        <div className="authorOptions">
+          {loggedInUser.id === post.authorId ? (
+            <button
+              onClick={() => {
+                setPosts({ type: PostActionTypes.deletePost, id: id });
+                navigate("/posts");
+              }}
+            >
+              Delete
+            </button>
+          ) : null}
+          {loggedInUser.id === post.authorId ? (
+            <div>
+              <Link
+                to={`/edit/${post.id}`}
+                style={{
+                  color: "#af5d1a",
+                  textDecoration: "unset",
+                  backgroundColor: "#00000081",
+                  borderRadius: "10px",
+                  display:"block",
+                  width: "50px",
+                  textAlign: "center"
+                }}
+              >
+                Edit
+              </Link>
+            </div>
+          ) : null}
+        </div>
+        {loggedInUser ? (
+          <NewComment dataId={post.id} onCommentSubmit={handleNewComment} />
+        ) : null}
+      </div>
+    </StyledPost>
   );
 };
 
