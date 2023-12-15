@@ -3,8 +3,6 @@ import { useEffect, useState, useContext } from "react";
 import PostsContext from "../../../contexts/PostContext";
 import UsersContext from "../../../contexts/UserContext";
 import { Link } from "react-router-dom";
-import CommentContext from "../../../contexts/CommentContext";
-import PostCard from "../../ui/post/PostCard";
 import CommentCard from "../../ui/commentCard/CommentCard";
 import NewComment from "../newComment/NewComment";
 
@@ -46,6 +44,7 @@ const PostPage = () => {
 
   return (
     <main> 
+      {post.edited ? <p>edited</p>: null}
       <div className="contentBox">
         <h1>{post.title}</h1>
         <p>{post.content}</p>

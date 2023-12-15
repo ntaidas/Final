@@ -31,7 +31,7 @@ const CommentCard = ({ data }) => {
   const { setComments, CommentActionTypes } = useContext(CommentContext);
   const { loggedInUser } = useContext(UsersContext);
   const [isEditing, setIsEditing] = useState(false);
-
+  
   const handleDelete = () => {
     setComments({
       type: CommentActionTypes.deleteComment,
@@ -51,16 +51,17 @@ const CommentCard = ({ data }) => {
     <StyledCommentCard>
       <p>{data.authorId}</p>
       {isEditing ? (
-        <EditComment data={data} onCancelEdit={handleCancelEdit} />
+        <EditComment data={data} onCancelEdit={handleCancelEdit}  />
       ) : (
         <>
           <p>{data.content}</p>
           {loggedInUser.userName === data.authorId ? (
             <>
-              <button onClick={handleEditClick}>Edit</button>
+              <button onClick={handleEditClick} data={data}>Edit</button>
               <button onClick={handleDelete}>Delete</button>
             </>
           ) : null}
+          {data.edited? <p>edited</p>:null}
         </>
       )}
     </StyledCommentCard>
