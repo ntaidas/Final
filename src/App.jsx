@@ -10,7 +10,7 @@ import AllPosts from "./components/pages/allPosts/AllPosts";
 import EditPost from "./components/pages/editPost/EditPost";
 import PostPage from "./components/pages/postPage/PostPage";
 import EditComment from "./components/pages/editComment/EditComment";
-
+import AnsweredPosts from "./components/pages/answeredPosts/AnsweredPosts";
 
 function App() {
   return (
@@ -19,10 +19,10 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/posts" element={<AllPosts />} />
+        <Route path="/answeredPosts" element={<AnsweredPosts />} />
         <Route path="posts/:id" element={<PostPage />} />
         <Route path="newPost" element={<NewPost />} />
         <Route path="edit/:id" element={<EditPost />} />
-        <Route path="/edit-comment/:editCommentId" element={<EditComment />} />
         <Route path="/user">
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />

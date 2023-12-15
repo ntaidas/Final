@@ -6,6 +6,7 @@ import { useContext } from "react";
 import UserContext from "../../../contexts/UserContext";
 import InputHandler from "../../ui/inputs/InputHandler";
 import CommentContext from "../../../contexts/CommentContext";
+import PostsContext from "../../../contexts/PostContext";
 
 
 const StyledNewComment = styled.main`
@@ -14,6 +15,7 @@ const StyledNewComment = styled.main`
 const NewComment = ({ dataId, onCommentSubmit }) => {
   const { CommentActionTypes, setComments } = useContext(CommentContext);
   const { loggedInUser } = useContext(UserContext);
+  const {setPosts, PostActionTypes} = useContext(PostsContext)
 
   const validationRules = Yup.object({
     content: Yup.string()
@@ -39,7 +41,6 @@ const NewComment = ({ dataId, onCommentSubmit }) => {
       };
 
       try {
-        // Make the network request to post the new comment
         const response = await fetch("http://localhost:8888/comments", {
           method: "POST",
           headers: {
@@ -52,13 +53,10 @@ const NewComment = ({ dataId, onCommentSubmit }) => {
           throw new Error("Failed to post comment");
         }
 
-        // Assuming the server returns the newly created comment
         const newComment = await response.json();
 
-        // Update the local state using onCommentSubmit
         onCommentSubmit(newComment);
 
-        // Update the context state if needed
         setComments({
           type: CommentActionTypes.newComment,
           data: newComment,
@@ -66,6 +64,14 @@ const NewComment = ({ dataId, onCommentSubmit }) => {
       } catch (error) {
         console.error("Error posting comment:", error);
       }
+      setPosts(fetch(`http://localhost:8888/posts/${dataId}`,{
+        method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({anwsered:true}),
+      }
+      ))
     },
   });
 

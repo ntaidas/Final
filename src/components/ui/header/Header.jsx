@@ -131,10 +131,10 @@ const Header = () => {
             <>
               <li>
                 <NavLink
-                  to="/followed"
+                  to="/answeredPosts"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
-                  Followed
+                  Anwered
                 </NavLink>
               </li>
 

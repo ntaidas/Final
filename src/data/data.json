@@ -49,7 +49,7 @@
       "authorId": 1,
       "score": 0,
       "edited": false,
-      "anwsered": false,
+      "anwsered": true,
       "title": "Sveiki visi",
       "content": "Sveikuciai kaip sekasi?"
     },
@@ -60,7 +60,7 @@
       "id": "5396d922-d310-4fc8-a160-57e9f271a833",
       "authorId": 1,
       "score": 0,
-      "anwsered": false
+      "anwsered": true
     },
     {
       "title": "kur kiti posta",
@@ -106,6 +106,30 @@
       "score": 0,
       "postId": "01ea689b-567a-492f-a727-f4c73d9553df",
       "authorId": "admin"
+    },
+    {
+      "id": "58f7d7a9-2a68-4403-a847-b0a3b7b6450d",
+      "score": 0,
+      "postId": "01ea689b-567a-492f-a727-f4c73d9553df",
+      "authorId": "admin",
+      "edited": false,
+      "content": "mama"
+    },
+    {
+      "id": "455a66c1-fe33-4c63-a55a-f492a4ed66a4",
+      "score": 0,
+      "postId": "5396d922-d310-4fc8-a160-57e9f271a833",
+      "authorId": "admin",
+      "edited": false,
+      "content": "baba"
+    },
+    {
+      "id": "16034997-f2c9-4636-9c8f-a16957af1c59",
+      "score": 0,
+      "postId": "01ea689b-567a-492f-a727-f4c73d9553df",
+      "authorId": "admin",
+      "edited": false,
+      "content": "Sveiki, labai prasau visu pagalbos"
     }
   ]
 }
